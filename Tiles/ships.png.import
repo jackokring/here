@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vysifeduxgnd"
-path="res://.godot/imported/tiles_packed.png-e521476fb3373f0ad64655bc63376c3a.ctex"
+uid="uid://cclbvhxw76ill"
+path="res://.godot/imported/ships.png-bc9b33c95a5c3692b2ab1b825ff2d8dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/tiles_packed.png"
-dest_files=["res://.godot/imported/tiles_packed.png-e521476fb3373f0ad64655bc63376c3a.ctex"]
+source_file="res://Tiles/ships.png"
+dest_files=["res://.godot/imported/ships.png-bc9b33c95a5c3692b2ab1b825ff2d8dc.ctex"]
 
 [params]
 

@@ -25,6 +25,7 @@ window/stretch/mode="viewport"
 
 2d_physics/layer_1="Background Solid"
 2d_navigation/layer_1="WorldBorder"
+2d_physics/layer_2="Avatar"
 2d_navigation/layer_5="PlayerAvatar"
 2d_navigation/layer_9="AIAvatar"
 2d_navigation/layer_13="ProjectileAvatar"

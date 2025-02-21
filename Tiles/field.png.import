@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpiyl7ghioa0a"
-path="res://.godot/imported/ships_packed.png-f7de4bd3ac6c136675e560c1a58672cb.ctex"
+uid="uid://dismjjnhb13hj"
+path="res://.godot/imported/field.png-d1ea76ac8499f7b83517bd79295d2541.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/ships_packed.png"
-dest_files=["res://.godot/imported/ships_packed.png-f7de4bd3ac6c136675e560c1a58672cb.ctex"]
+source_file="res://Tiles/field.png"
+dest_files=["res://.godot/imported/field.png-d1ea76ac8499f7b83517bd79295d2541.ctex"]
 
 [params]
 
