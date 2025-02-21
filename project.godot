@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Here"
-run/main_scene="res://main.tscn"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Vectors/icon.svg"
 
 [display]
 
@@ -24,6 +24,10 @@ window/stretch/mode="viewport"
 [layer_names]
 
 2d_physics/layer_1="Background Solid"
+2d_navigation/layer_1="WorldBorder"
+2d_navigation/layer_5="PlayerAvatar"
+2d_navigation/layer_9="AIAvatar"
+2d_navigation/layer_13="ProjectileAvatar"
 
 [rendering]
 

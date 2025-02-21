@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv466uswmlpom"
-path="res://.godot/imported/zx.png-fd00bab4aba91d1c5aedd9c71b6d12f6.ctex"
+path="res://.godot/imported/zx.png-d52e17cf08104388be04fbe235acf2ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://zx.png"
-dest_files=["res://.godot/imported/zx.png-fd00bab4aba91d1c5aedd9c71b6d12f6.ctex"]
+source_file="res://Tiles/zx.png"
+dest_files=["res://.godot/imported/zx.png-d52e17cf08104388be04fbe235acf2ee.ctex"]
 
 [params]
 
