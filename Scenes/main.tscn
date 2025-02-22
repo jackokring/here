@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=4 uid="uid://c4nudo6vvy8m1"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_wci3j"]
+[ext_resource type="Theme" uid="uid://4yy83fb8gqgq" path="res://Fonts/custom_theme.tres" id="2_4wlb6"]
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="2_hqccx"]
-[ext_resource type="FontFile" uid="uid://bjdm0udpv2bhc" path="res://Fonts/JetBrainsMonoNLNerdFont-Regular.ttf" id="2_jn31b"]
 [ext_resource type="Texture2D" uid="uid://bv466uswmlpom" path="res://Tiles/zx.png" id="3_6irwk"]
 [ext_resource type="Script" path="res://Scripts/sky.gd" id="3_7xf4d"]
 [ext_resource type="Texture2D" uid="uid://c2nnwr635tk2h" path="res://Tiles/animals.png" id="4_43amk"]
@@ -273,42 +273,78 @@ offset_right = 570.0
 offset_bottom = 410.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = 0
-theme_override_constants/side_margin = 4
-theme_override_fonts/font = ExtResource("2_jn31b")
-theme_override_font_sizes/font_size = 16
+theme = ExtResource("2_4wlb6")
 tab_alignment = 1
-current_tab = 0
+current_tab = 5
 script = ExtResource("2_hqccx")
 
-[node name="Play" type="PanelContainer" parent="GUI"]
+[node name="Play" type="MarginContainer" parent="GUI"]
+visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 0
 
-[node name="Save" type="PanelContainer" parent="GUI"]
+[node name="Save" type="MarginContainer" parent="GUI"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 1
 
-[node name="Scores" type="PanelContainer" parent="GUI"]
+[node name="Scores" type="MarginContainer" parent="GUI"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 2
 
-[node name="Settings" type="PanelContainer" parent="GUI"]
+[node name="Setup" type="MarginContainer" parent="GUI"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 3
 
-[node name="Lore" type="PanelContainer" parent="GUI"]
+[node name="Lore" type="MarginContainer" parent="GUI"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 4
 
-[node name="Credits" type="PanelContainer" parent="GUI"]
-visible = false
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Lore"]
 layout_mode = 2
+bbcode_enabled = true
+text = "cool"
+fit_content = true
+
+[node name="Credits" type="MarginContainer" parent="GUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Credits"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=red]hhjh[/color]
+[font_size=20]njnjnjjnjn nnnbhbh[/font_size]
+hhh
+"
+fit_content = true
 
 [node name="Sky" type="TileMapLayer" parent="."]
 z_index = 3

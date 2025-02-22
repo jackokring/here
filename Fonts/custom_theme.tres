@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://4yy83fb8gqgq"]
+
+[ext_resource type="FontFile" uid="uid://bjdm0udpv2bhc" path="res://Fonts/JetBrainsMonoNLNerdFont-Regular.ttf" id="1_6uf2w"]
+
+[resource]
+default_font = ExtResource("1_6uf2w")
