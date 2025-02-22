@@ -23,12 +23,14 @@ window/stretch/mode="viewport"
 
 [layer_names]
 
-2d_physics/layer_1="Background Solid"
-2d_navigation/layer_1="WorldBorder"
+2d_physics/layer_1="Border"
 2d_physics/layer_2="Avatar"
-2d_navigation/layer_5="PlayerAvatar"
-2d_navigation/layer_9="AIAvatar"
-2d_navigation/layer_13="ProjectileAvatar"
+2d_physics/layer_3="AI"
+2d_physics/layer_4="Container"
+2d_physics/layer_5="Bullet"
+2d_physics/layer_6="Inventory"
+2d_physics/layer_7="SkyAI"
+2d_physics/layer_8="Blast"
 
 [rendering]
 
