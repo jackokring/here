@@ -20,4 +20,4 @@ func set_frame(number: int) -> void:
 	$Sprite2D.frame = number
 
 func body_entered(body: Node) -> void:
-	$AudioStreamPlayer2D.play()
+	$Bounce.play()
