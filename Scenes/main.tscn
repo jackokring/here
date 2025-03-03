@@ -329,7 +329,6 @@ metadata/_tab_index = 4
 layout_mode = 2
 bbcode_enabled = true
 text = "cool"
-fit_content = true
 
 [node name="Credits" type="MarginContainer" parent="GUI"]
 layout_mode = 2
@@ -342,11 +341,24 @@ metadata/_tab_index = 5
 [node name="RichTextLabel" type="RichTextLabel" parent="GUI/Credits"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=red]hhjh[/color]
-[font_size=20]njnjnjjnjn nnnbhbh[/font_size]
-hhh
-"
-fit_content = true
+text = "[center][font_size=20]Graphics[/font_size]
+[url=kenny.nl]Kenny[/url] pixel graphics
+
+[font_size=20]Sounds[/font_size]
+Simon Jackson
+
+[font_size=20]Coding and Algorithms[/font_size]
+Simon Jackson
+
+[font_size=20]Concept[/font_size]
+[url=kring.co.uk]K Ring Technologies Ltd[/url]
+Simon Jackson
+
+[font_size=20]Tooling[/font_size]
+[url=godotengine.org]Godot[/url] game engine
+[url=gimp.org]GIMP[/url] image editor
+
+[/center]"
 
 [node name="Sky" type="TileMapLayer" parent="."]
 z_index = 3
@@ -393,4 +405,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAQACAAEAAAAAAAEAAQACAAEAAAAAAAIAAQACAAE
 tile_set = SubResource("TileSet_h565u")
 script = ExtResource("6_yw450")
 
+[connection signal="meta_clicked" from="GUI/Lore/RichTextLabel" to="GUI" method="meta_clicked"]
+[connection signal="meta_clicked" from="GUI/Credits/RichTextLabel" to="GUI" method="meta_clicked"]
 [connection signal="body_entered" from="Player" to="Player" method="body_entered"]
