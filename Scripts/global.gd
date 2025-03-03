@@ -15,7 +15,7 @@ func rid_to_tile(tile_map: TileMapLayer, rid: RID):
 # set tile atlas pos at collision RID shape on tile map layer
 func rid_to_newtile(tile_map: TileMapLayer, rid: RID, atlas: Vector2i):
 		var pos = tile_map.get_coords_for_body_rid(rid)
-		tile_map.set_cell(pos, -1, atlas, 0)
+		tile_map.set_cell(pos, 1, atlas, 0)
 
 
 # get tile atlas pos at pos
@@ -25,7 +25,7 @@ func pos_to_tile(tile_map: TileMapLayer, pos: Vector2i):
 
 # set tile atlas pos at pos
 func pos_to_newtile(tile_map: TileMapLayer, pos: Vector2i, atlas: Vector2i):
-	tile_map.set_cell(pos, -1, atlas, 0)
+	tile_map.set_cell(pos, 1, atlas, 0)
 
 
 ## RigidBody2D
