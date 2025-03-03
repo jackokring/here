@@ -1,6 +1,7 @@
 extends RigidBody2D
 var last = Vector2(0, 0)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	contact_monitor = true
@@ -21,6 +22,7 @@ func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func set_frame(number: int) -> void:
 	$Sprite2D.frame = number
 
-func body_entered(body: Node) -> void:
-	if body.name == "Field":
+# Atlas position
+func tile_collide(id: Vector2i) -> void:
+	if id == Vector2i(0, 0):
 		$Bounce.play()
