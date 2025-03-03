@@ -18,6 +18,7 @@ config/icon="res://Vectors/icon.svg"
 [autoload]
 
 Global="*res://Scripts/global.gd"
+Atlas="*res://Scripts/atlas.gd"
 
 [display]
 

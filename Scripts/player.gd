@@ -19,11 +19,10 @@ func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	last = vel
 
 
-func set_frame(number: int) -> void:
-	$Sprite2D.frame = number
-
-
-# Atlas position
-func tile_collide(id: Vector2i) -> void:
-	if id == Vector2i(0, 0):
-		$Bounce.play()
+# atlas pos collide 
+func tile_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
+	match atlas:
+		Atlas.field:
+			match id:
+				Atlas.field[Atlas.WALL]:
+					$Bounce.play()
