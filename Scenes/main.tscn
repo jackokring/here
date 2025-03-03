@@ -329,6 +329,7 @@ metadata/_tab_index = 4
 layout_mode = 2
 bbcode_enabled = true
 text = "cool"
+threaded = true
 
 [node name="Credits" type="MarginContainer" parent="GUI"]
 layout_mode = 2
@@ -359,6 +360,7 @@ Simon Jackson
 [url=gimp.org]GIMP[/url] image editor
 
 [/center]"
+threaded = true
 
 [node name="Sky" type="TileMapLayer" parent="."]
 z_index = 3
