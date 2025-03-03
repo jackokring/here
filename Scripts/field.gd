@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 # Field collision kinematics
+# N.B. complex of body_entered as RID needed to extract tile from map
 func body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body == self:
 		var id: Vector2i = Global.rid_to_tile(self, body_rid)

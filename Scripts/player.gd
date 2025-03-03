@@ -22,6 +22,7 @@ func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func set_frame(number: int) -> void:
 	$Sprite2D.frame = number
 
+
 # Atlas position
 func tile_collide(id: Vector2i) -> void:
 	if id == Vector2i(0, 0):
