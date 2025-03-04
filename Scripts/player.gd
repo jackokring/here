@@ -4,6 +4,7 @@ var last = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	body_shape_entered.connect(on_body_shape_entered)
 	contact_monitor = true
 	max_contacts_reported = 16
 
@@ -37,7 +38,7 @@ func body_collide(kind: int, body: RigidBody2D):
 
 
 # all colliders
-func body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+func on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body is TileMapLayer:
 		var id: Vector2i = Global.rid_to_tile(body, body_rid)
 		map_collide(Global.map_to_atlas(body), id)

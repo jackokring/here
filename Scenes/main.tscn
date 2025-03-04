@@ -409,4 +409,3 @@ script = ExtResource("6_yw450")
 
 [connection signal="meta_clicked" from="GUI/Lore/RichTextLabel" to="GUI" method="meta_clicked"]
 [connection signal="meta_clicked" from="GUI/Credits/RichTextLabel" to="GUI" method="meta_clicked"]
-[connection signal="body_shape_entered" from="Player" to="Player" method="body_shape_entered"]
