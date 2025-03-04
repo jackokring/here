@@ -28,6 +28,13 @@ func pos_to_newtile(tile_map: TileMapLayer, pos: Vector2i, atlas: Vector2i):
 	tile_map.set_cell(pos, 1, atlas, 0)
 
 
+# has specific atlas
+func map_to_atlas(tile_map: TileMapLayer):
+	if tile_map.has_method("use_atlas"):
+		return tile_map.use_atlas()
+	return null
+
+
 ## RigidBody2D
 # get atlas pos
 func body_to_sprite(body: RigidBody2D):
@@ -39,3 +46,10 @@ func body_to_sprite(body: RigidBody2D):
 func body_to_newsprite(body: RigidBody2D, atlas: Vector2i):
 	var sprite: Sprite2D = body.get_node("Sprite2D")
 	sprite.frame_coords = atlas
+
+
+# get body type
+func body_to_type(body: RigidBody2D):
+	if body.has_method("is_type"):
+		return body.is_type()
+	return null

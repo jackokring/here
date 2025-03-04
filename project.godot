@@ -19,6 +19,8 @@ config/icon="res://Vectors/icon.svg"
 
 Global="*res://Scripts/global.gd"
 Atlas="*res://Scripts/atlas.gd"
+Body="*res://Scripts/body.gd"
+Game="*res://Scripts/game.gd"
 
 [display]
 

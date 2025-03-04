@@ -15,14 +15,30 @@ func _process(delta: float) -> void:
 
 func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var vel = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	add_constant_central_force(10.0 * (vel - last))
+	add_constant_central_force(Game.vel_max * (vel - last))
 	last = vel
 
 
 # atlas pos collide 
-func tile_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
+func map_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
 	match atlas:
 		Atlas.field:
 			match id:
 				Atlas.field[Atlas.WALL]:
 					$Bounce.play()
+
+
+# body collide
+func body_collide(kind: int):
+	match kind:
+		Body.PLAYER:
+			pass
+
+
+# all colliders
+func body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+	if body is TileMapLayer:
+		var id: Vector2i = Global.rid_to_tile(body, body_rid)
+		map_collide(Global.map_to_atlas(body), id)
+	if body is RigidBody2D:
+		body_collide(Global.body_to_type(body))

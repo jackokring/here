@@ -11,11 +11,5 @@ func _process(delta: float) -> void:
 
 
 # TileMapLayer collision kinematics
-# N.B. complex of body_entered as RID needed to extract tile from map
-signal tile_collide(atlas: Array[Vector2i], id: Vector2i)
-
-
-func body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-	if body == self:
-		var id: Vector2i = Global.rid_to_tile(self, body_rid)
-		tile_collide.emit(Atlas.field, id)
+func use_atlas():
+	return Atlas.field
