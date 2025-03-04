@@ -2,6 +2,9 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_wjsed"]
 resource_name = "LowPassFilter"
+cutoff_hz = 800.0
+resonance = 0.77
+db = 3
 
 [resource]
 bus/1/name = &"Bass"

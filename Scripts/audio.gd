@@ -4,11 +4,19 @@ extends AudioStreamPlayer
 const centre = Vector2(1.0, 1.0)
 var playback
 var rate
-var freq = 440.0
-var phase = 0.0
+var freq = 440.0 / 8
+# zero crossing
+var phase = 0.5
 
 func _ready() -> void:
 	rate = stream.mix_rate
+	start()
+
+
+func _process(delta: float) -> void:
+	fill_buffer()
+
+func start():
 	play()
 	playback = get_stream_playback()
 	fill_buffer()
