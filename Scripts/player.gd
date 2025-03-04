@@ -15,6 +15,9 @@ func _process(delta: float) -> void:
 
 
 func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	freeze = Game.paused
+	if freeze:
+		return
 	var vel = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	add_constant_central_force(Game.vel_max * (vel - last))
 	last = vel
@@ -44,3 +47,7 @@ func on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, loc
 		map_collide(Global.map_to_atlas(body), id)
 	if body is RigidBody2D:
 		body_collide(Global.body_to_type(body), body)
+
+
+func is_type():
+	return Body.PLAYER
