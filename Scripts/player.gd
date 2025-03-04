@@ -29,7 +29,8 @@ func map_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
 
 
 # body collide
-func body_collide(kind: int):
+# use body for information exchange?
+func body_collide(kind: int, body: RigidBody2D):
 	match kind:
 		Body.PLAYER:
 			pass
@@ -41,4 +42,4 @@ func body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_
 		var id: Vector2i = Global.rid_to_tile(body, body_rid)
 		map_collide(Global.map_to_atlas(body), id)
 	if body is RigidBody2D:
-		body_collide(Global.body_to_type(body))
+		body_collide(Global.body_to_type(body), body)
