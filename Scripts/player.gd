@@ -11,13 +11,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-
-func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	freeze = Game.paused
 	if freeze:
 		return
+
+
+func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var vel = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	add_constant_central_force(Game.vel_max * (vel - last))
 	last = vel
