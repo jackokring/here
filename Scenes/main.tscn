@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c4nudo6vvy8m1"]
+[gd_scene load_steps=24 format=4 uid="uid://c4nudo6vvy8m1"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_wci3j"]
 [ext_resource type="Theme" uid="uid://4yy83fb8gqgq" path="res://Fonts/custom_theme.tres" id="2_4wlb6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/field.gd" id="6_yw450"]
 [ext_resource type="AudioStream" uid="uid://dc36xkb1f674l" path="res://Sounds/bounce.wav" id="9_qdb6k"]
 [ext_resource type="Script" path="res://Scripts/audio.gd" id="12_a6c1f"]
+[ext_resource type="AudioStream" uid="uid://7uecrxdv85r4" path="res://Sounds/boom.wav" id="13_hv6rx"]
 
 [sub_resource type="TileSet" id="TileSet_okgd7"]
 
@@ -415,6 +416,11 @@ script = ExtResource("6_yw450")
 stream = SubResource("AudioStreamGenerator_48uwx")
 bus = &"Bass"
 script = ExtResource("12_a6c1f")
+
+[node name="Boom" type="AudioStreamPlayer" parent="Bass"]
+stream = ExtResource("13_hv6rx")
+volume_db = -8.0
+pitch_scale = 0.5
 
 [connection signal="meta_clicked" from="GUI/Lore/RichTextLabel" to="GUI" method="meta_clicked"]
 [connection signal="meta_clicked" from="GUI/Credits/RichTextLabel" to="GUI" method="meta_clicked"]

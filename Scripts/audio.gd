@@ -17,21 +17,22 @@ const notes: Array[float] = [
 	34.64783, 36.7081, 38.89087, 41.20344,
 	43.65353, 46.2493, 48.99943, 51.91309,
 ]
+var drum: Array[AudioStreamPlayer]
 const env_mod: Array[float] = [
 	#0 freqMul, envGain, rez
 	32.0, 1.0, 0.77,
 	#1
-	16.0, 3.0, 3.0
+	16.0, 3.0, 3.0,
 ]
 const pat_step = 4
-const pat_para = 3
+const pat_para = 4
 const stride = pat_para * pat_step
 const pats: Array[int] = [
-	#0 [Note], stutterCount, [envMod]
-	0, 1, 0,
-	11, 2, 1,
-	5, 1, 0,
-	7, 1, 0,
+	#0 [Note], stutterCount, [envMod], [drum]
+	0, 1, 0, 0,
+	11, 3, 1, 0,
+	5, 1, 0, 0,
+	7, 1, 0, 0,
 ]
 const song: Array[int] = [
 	#Pat number
@@ -41,6 +42,10 @@ const song: Array[int] = [
 func _ready() -> void:
 	rate = 1 / stream.mix_rate
 	lpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Bass"), 0) as AudioEffectFilter
+	drum = [
+		#0
+		$Boom,
+	]
 	start()
 
 
@@ -72,7 +77,9 @@ func fill_buffer() -> void:
 	freq *= env_mod[3 * mod] * (1.0 + df)
 	var rez: float = env_mod[3 * mod + 2]
 	lpf.cutoff_hz = freq
-	lpf.resonance = rez 
+	lpf.resonance = rez
+	# and some drum
+	drum[pats[fil_i + 3]].play() 
 	for i in range(frames):
 		var idx = (song[song_pos / pat_step % song.size()]
 		* stride + (song_pos % pat_step) * pat_para)
