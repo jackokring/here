@@ -7,7 +7,8 @@ var rate: float
 # zero crossing
 var phase: float = 0.5
 var time: float = 0.0
-var bpm: float = 120.0
+const bpm: float = 50.0
+const npm: float = bpm * 4.0
 var song_pos: int = 0
 var lpf: AudioEffectFilter
 var last_drum: int = -1
@@ -29,9 +30,9 @@ const pat_para = 4
 const stride = pat_para * pat_step
 const pats: PackedByteArray = [
 	#0 [Note], stutterCount, [envMod], [drum]
-	0, 1, 0, 0,
-	11, 3, 1, 4,
-	5, 1, 0, 1,
+	0, 2, 0, 0,
+	9, 1, 1, 4,
+	5, 4, 0, 1,
 	7, 1, 0, 2,
 ]
 # 256 pattern limit
@@ -62,7 +63,7 @@ func start() -> void:
 
 func fill_buffer() -> void:
 	var frames: int = playback.get_frames_available()
-	var bps: float = bpm / 60.0
+	var bps: float = npm / 60.0
 	var inc_env: float = bps * rate
 	# filter delay approximation (envelope slow Nyquist)
 	var fil_d: float = ((get_playback_position() + AudioServer.get_time_since_last_mix())
@@ -82,8 +83,8 @@ func fill_buffer() -> void:
 	# and some drum
 	if fil_i != last_drum:
 		var d: AudioStreamPlayer = drum[pats[fil_i + 3]]
-		if not d.is_playing():
-			d.play()
+		# maybe use multiple channels
+		d.play()
 	last_drum = fil_i 
 	for i in range(frames):
 		var idx = (song[song_pos / pat_step % song.size()]

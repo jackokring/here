@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://th65c8v402vp"]
+
+[ext_resource type="Script" path="res://Scripts/audio.gd" id="1_e86we"]
+[ext_resource type="AudioStream" uid="uid://clmqmtxy71tv7" path="res://Sounds/Drums/techno-kick.wav" id="2_wcurf"]
+[ext_resource type="AudioStream" uid="uid://nhledqtkwv4" path="res://Sounds/Drums/clubber-snare.wav" id="3_eqi1r"]
+[ext_resource type="AudioStream" uid="uid://pcblqe8rstwl" path="res://Sounds/Drums/capital-clap-sweet.wav" id="4_ri6sn"]
+[ext_resource type="AudioStream" uid="uid://dni41xa35ma5q" path="res://Sounds/Drums/jazz-house-open-hi-hat.wav" id="5_jcvpm"]
+[ext_resource type="AudioStream" uid="uid://btg0v2t0d3bu4" path="res://Sounds/Drums/lil-jon-type-closed-hi-hat.wav" id="6_8nrsr"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_48uwx"]
+mix_rate = 8192.0
+
+[node name="Bass" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamGenerator_48uwx")
+bus = &"Bass"
+script = ExtResource("1_e86we")
+
+[node name="Kick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wcurf")
+volume_db = 4.0
+bus = &"Drum"
+
+[node name="Snare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eqi1r")
+bus = &"Drum"
+
+[node name="Clap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ri6sn")
+bus = &"Drum"
+
+[node name="Open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jcvpm")
+bus = &"Drum"
+
+[node name="Closed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8nrsr")
+bus = &"Drum"
