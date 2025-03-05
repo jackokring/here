@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 # Bass generator
-const centre: Vector2 = Vector2(1.0, 1.0)
+const pan: Vector2 = Vector2(1.0, 1.0)
 var playback: AudioStreamGeneratorPlayback
 var rate: float
 # zero crossing
@@ -45,7 +45,7 @@ func _ready() -> void:
 	lpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Bass"), 0) as AudioEffectFilter
 	drum = [
 		#0
-		$Boom,
+		$Kick,
 	]
 	start()
 
@@ -87,7 +87,10 @@ func fill_buffer() -> void:
 		var inc: float = notes[pats[idx]] * rate
 		time = fmod(time, 1.0)
 		var env: float = 1.0 - fmod(pats[idx + 1] * time, 1.0)
-		playback.push_frame((phase - 0.5) * env * centre)
+		playback.push_frame((phase - 0.5) * env * pan)
 		phase = fmod(phase + inc, 1.0)
 		time += inc_env
-		song_pos += int(time)
+		var quant = int(time)
+		song_pos += quant
+		# zero crossing start
+		phase = (1 - quant) * phase + quant * 0.5
