@@ -10,7 +10,7 @@ var time: float = 0.0
 var bpm: float = 120.0
 var song_pos: int = 0
 var lpf: AudioEffectFilter
-
+var last_drum: int = -1
 # Tune
 const notes: PackedFloat32Array = [
 	27.5, 29.13524, 30.86771, 32.7032,
@@ -30,9 +30,9 @@ const stride = pat_para * pat_step
 const pats: PackedByteArray = [
 	#0 [Note], stutterCount, [envMod], [drum]
 	0, 1, 0, 0,
-	11, 3, 1, 0,
-	5, 1, 0, 0,
-	7, 1, 0, 0,
+	11, 3, 1, 4,
+	5, 1, 0, 1,
+	7, 1, 0, 2,
 ]
 # 256 pattern limit
 const song: PackedByteArray = [
@@ -44,8 +44,8 @@ func _ready() -> void:
 	rate = 1 / stream.mix_rate
 	lpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Bass"), 0) as AudioEffectFilter
 	drum = [
-		#0
-		$Kick,
+		#0 to 4
+		$Kick, $Snare, $Clap, $Open, $Closed
 	]
 	start()
 
@@ -80,7 +80,11 @@ func fill_buffer() -> void:
 	lpf.cutoff_hz = freq
 	lpf.resonance = rez
 	# and some drum
-	drum[pats[fil_i + 3]].play() 
+	if fil_i != last_drum:
+		var d: AudioStreamPlayer = drum[pats[fil_i + 3]]
+		if not d.is_playing():
+			d.play()
+	last_drum = fil_i 
 	for i in range(frames):
 		var idx = (song[song_pos / pat_step % song.size()]
 		* stride + (song_pos % pat_step) * pat_para)

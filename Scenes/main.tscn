@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c4nudo6vvy8m1"]
+[gd_scene load_steps=28 format=4 uid="uid://c4nudo6vvy8m1"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_wci3j"]
 [ext_resource type="Theme" uid="uid://4yy83fb8gqgq" path="res://Fonts/custom_theme.tres" id="2_4wlb6"]
@@ -13,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://dc36xkb1f674l" path="res://Sounds/bounce.wav" id="9_qdb6k"]
 [ext_resource type="Script" path="res://Scripts/audio.gd" id="12_a6c1f"]
 [ext_resource type="AudioStream" uid="uid://clmqmtxy71tv7" path="res://Sounds/Drums/techno-kick.wav" id="13_hq18g"]
+[ext_resource type="AudioStream" uid="uid://nhledqtkwv4" path="res://Sounds/Drums/clubber-snare.wav" id="14_0nuqp"]
+[ext_resource type="AudioStream" uid="uid://pcblqe8rstwl" path="res://Sounds/Drums/capital-clap-sweet.wav" id="15_m2lh7"]
+[ext_resource type="AudioStream" uid="uid://dni41xa35ma5q" path="res://Sounds/Drums/jazz-house-open-hi-hat.wav" id="16_buyg3"]
+[ext_resource type="AudioStream" uid="uid://btg0v2t0d3bu4" path="res://Sounds/Drums/lil-jon-type-closed-hi-hat.wav" id="17_p6fq2"]
 
 [sub_resource type="TileSet" id="TileSet_okgd7"]
 
@@ -420,6 +424,22 @@ script = ExtResource("12_a6c1f")
 [node name="Kick" type="AudioStreamPlayer" parent="Bass"]
 stream = ExtResource("13_hq18g")
 volume_db = 4.0
+bus = &"Drum"
+
+[node name="Snare" type="AudioStreamPlayer" parent="Bass"]
+stream = ExtResource("14_0nuqp")
+bus = &"Drum"
+
+[node name="Clap" type="AudioStreamPlayer" parent="Bass"]
+stream = ExtResource("15_m2lh7")
+bus = &"Drum"
+
+[node name="Open" type="AudioStreamPlayer" parent="Bass"]
+stream = ExtResource("16_buyg3")
+bus = &"Drum"
+
+[node name="Closed" type="AudioStreamPlayer" parent="Bass"]
+stream = ExtResource("17_p6fq2")
 bus = &"Drum"
 
 [connection signal="meta_clicked" from="GUI/Lore/RichTextLabel" to="GUI" method="meta_clicked"]
