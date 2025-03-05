@@ -17,13 +17,14 @@ const notes: Array[float] = [
 	43.65353, 46.2493, 48.99943, 51.91309
 ]
 const pat_step = 4
-const pat_para = 1
+const pat_para = 2
+const stride = pat_para * pat_step
 const pats: Array[int] = [
-	#0 Note number,
-	0,
-	11,
-	5,
-	7
+	#0 Note number, stutter
+	0, 1,
+	11, 2,
+	5, 1,
+	7, 3,
 ]
 const song: Array[int] = [
 	#Pat number
@@ -49,11 +50,12 @@ func fill_buffer() -> void:
 	var frames: int = playback.get_frames_available()
 	var inc_env: float = bpm / 60.0 * rate
 	for i in range(frames):
-		var note = notes[pats[song[song_pos / pat_step % song.size()] 
-		* pat_step * pat_para + (song_pos % pat_step) * pat_para]]
-		var inc: float = note * rate
-		playback.push_frame((phase - 0.5) * (1.0 - time) * centre)
+		var idx = (song[song_pos / pat_step % song.size()]
+		* stride + (song_pos % pat_step) * pat_para)
+		var inc: float = notes[pats[idx]] * rate
+		time = fmod(time, 1.0)
+		var env: float = 1.0 - fmod(pats[idx + 1] * time, 1.0)
+		playback.push_frame((phase - 0.5) * env * centre)
 		phase = fmod(phase + inc, 1.0)
 		time += inc_env
 		song_pos += int(time)
-		time = fmod(time, 1.0)
