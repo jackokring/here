@@ -7,18 +7,18 @@ var rate: float
 # zero crossing
 var phase: float = 0.5
 var time: float = 0.0
-var bpm: float = 120.0 * 2
+var bpm: float = 120.0
 var song_pos: int = 0
 var lpf: AudioEffectFilter
 
 # Tune
-const notes: Array[float] = [
+const notes: PackedFloat32Array = [
 	27.5, 29.13524, 30.86771, 32.7032,
 	34.64783, 36.7081, 38.89087, 41.20344,
 	43.65353, 46.2493, 48.99943, 51.91309,
 ]
 var drum: Array[AudioStreamPlayer]
-const env_mod: Array[float] = [
+const env_mod: PackedFloat32Array = [
 	#0 freqMul, envGain, rez
 	32.0, 1.0, 0.77,
 	#1
@@ -27,14 +27,15 @@ const env_mod: Array[float] = [
 const pat_step = 4
 const pat_para = 4
 const stride = pat_para * pat_step
-const pats: Array[int] = [
+const pats: PackedByteArray = [
 	#0 [Note], stutterCount, [envMod], [drum]
 	0, 1, 0, 0,
 	11, 3, 1, 0,
 	5, 1, 0, 0,
 	7, 1, 0, 0,
 ]
-const song: Array[int] = [
+# 256 pattern limit
+const song: PackedByteArray = [
 	#Pat number
 	0
 ]
