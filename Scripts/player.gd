@@ -16,8 +16,8 @@ func _process(delta: float) -> void:
 
 func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var input = Game.speed_baseline * Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	apply_central_impulse(input)
-	apply_central_impulse(-Game.friction * state.linear_velocity)
+	state.apply_central_impulse(input * state.step)
+	state.apply_central_impulse(-Game.friction * state.linear_velocity * state.step)
 
 # atlas pos collide 
 func map_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
