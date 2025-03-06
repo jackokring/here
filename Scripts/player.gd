@@ -1,6 +1,4 @@
 extends RigidBody2D
-var last = Vector2(0, 0)
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,10 +15,9 @@ func _process(delta: float) -> void:
 
 
 func  _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	var vel = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	add_constant_central_force(Game.vel_max * (vel - last))
-	last = vel
-
+	var input = Game.speed_baseline * Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	apply_central_impulse(input)
+	apply_central_impulse(-Game.friction * state.linear_velocity)
 
 # atlas pos collide 
 func map_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
