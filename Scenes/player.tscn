@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcb5udwiaamw0"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_d2rsa"]
+[ext_resource type="Script" uid="uid://cscpq42rfcmq" path="res://Scripts/player.gd" id="1_d2rsa"]
 [ext_resource type="Texture2D" uid="uid://c2nnwr635tk2h" path="res://Tiles/animals.png" id="2_7pqyo"]
 [ext_resource type="AudioStream" uid="uid://dc36xkb1f674l" path="res://Sounds/bounce.wav" id="3_7j5p0"]
 

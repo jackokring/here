@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://th65c8v402vp"]
 
-[ext_resource type="Script" path="res://Scripts/audio.gd" id="1_e86we"]
+[ext_resource type="Script" uid="uid://dnt21drmy3ym0" path="res://Scripts/audio.gd" id="1_e86we"]
 [ext_resource type="AudioStream" uid="uid://clmqmtxy71tv7" path="res://Sounds/Drums/techno-kick.wav" id="2_wcurf"]
 [ext_resource type="AudioStream" uid="uid://nhledqtkwv4" path="res://Sounds/Drums/clubber-snare.wav" id="3_eqi1r"]
 [ext_resource type="AudioStream" uid="uid://pcblqe8rstwl" path="res://Sounds/Drums/capital-clap-sweet.wav" id="4_ri6sn"]

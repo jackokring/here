@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dh52fxnof5pfc"]
 
 [ext_resource type="Theme" uid="uid://4yy83fb8gqgq" path="res://Fonts/custom_theme.tres" id="1_3e6ll"]
-[ext_resource type="Script" path="res://Scripts/gui.gd" id="2_ok0do"]
+[ext_resource type="Script" uid="uid://qrlieijuhyhy" path="res://Scripts/gui.gd" id="2_ok0do"]
 
 [node name="GUI" type="TabContainer"]
 z_index = 4

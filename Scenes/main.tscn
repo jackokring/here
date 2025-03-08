@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=4 uid="uid://c4nudo6vvy8m1"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_wci3j"]
+[ext_resource type="Script" uid="uid://p1banef2my5f" path="res://Scripts/main.gd" id="1_wci3j"]
 [ext_resource type="PackedScene" uid="uid://dh52fxnof5pfc" path="res://Scenes/gui.tscn" id="2_upaaj"]
 [ext_resource type="Texture2D" uid="uid://bv466uswmlpom" path="res://Tiles/zx.png" id="3_6irwk"]
-[ext_resource type="Script" path="res://Scripts/sky.gd" id="3_7xf4d"]
-[ext_resource type="Script" path="res://Scripts/overlay.gd" id="5_c6khe"]
+[ext_resource type="Script" uid="uid://cu8mjfbvt36so" path="res://Scripts/sky.gd" id="3_7xf4d"]
+[ext_resource type="Script" uid="uid://cmpdmlwt3fkou" path="res://Scripts/overlay.gd" id="5_c6khe"]
 [ext_resource type="PackedScene" uid="uid://dcb5udwiaamw0" path="res://Scenes/player.tscn" id="6_0xi8y"]
 [ext_resource type="Texture2D" uid="uid://dismjjnhb13hj" path="res://Tiles/field.png" id="6_hf1i6"]
-[ext_resource type="Script" path="res://Scripts/field.gd" id="6_yw450"]
+[ext_resource type="Script" uid="uid://biadttfl8pa6u" path="res://Scripts/field.gd" id="6_yw450"]
 [ext_resource type="PackedScene" uid="uid://th65c8v402vp" path="res://Scenes/bass.tscn" id="9_w267c"]
 
 [sub_resource type="TileSet" id="TileSet_okgd7"]
