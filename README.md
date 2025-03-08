@@ -1,3 +1,9 @@
+# N.B. A Note on `git pull` with Godot
+
+You must `godot project.godot` to open the project to resolve resources once
+after a `git pull`. Failure to do so may make the autorun `godot` use old
+resource files. After that `godot` seems to do an autorun fine.
+
 # Here
 
 A game in `godot` using some free art tiles and audio resources. The aim being
