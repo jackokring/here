@@ -1,4 +1,9 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://d0j5afhv5tepl"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://d0j5afhv5tepl"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+cutoff_hz = 8000.0
+db = 3
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_wjsed"]
 resource_name = "LowPassFilter"
@@ -19,6 +24,8 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"DNB"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/2/effect/0/enabled = true
 bus/3/name = &"Bass"
 bus/3/solo = false
 bus/3/mute = false
