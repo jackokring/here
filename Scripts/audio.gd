@@ -14,18 +14,13 @@ var lpf: AudioEffectFilter
 var dlpf: AudioEffectFilter
 var last_drum: int = -1
 # Tune
+enum { C, Cs, D, Ds, E, F, Fs, G, Gs, A, As, B }
+enum { O0 = 1, O1 = 2, O2 = 4, O3 = 8, O4 = 16 }
 const notes: PackedFloat32Array = [
-	27.5, 29.13524, 30.86771, 32.7032,
+	32.7032,# C
 	34.64783, 36.7081, 38.89087, 41.20344,
 	43.65353, 46.2493, 48.99943, 51.91309,
-	
-	27.5 * 2, 29.13524 * 2, 30.86771 * 2, 32.7032 * 2,
-	34.64783 * 2, 36.7081 * 2, 38.89087 * 2, 41.20344 * 2,
-	43.65353 * 2, 46.2493 * 2, 48.99943 * 2, 51.91309 * 2,
-	
-	27.5 * 4, 29.13524 * 4, 30.86771 * 4, 32.7032 * 4,
-	34.64783 * 4, 36.7081 * 4, 38.89087 * 4, 41.20344 * 4,
-	43.65353 * 4, 46.2493 * 4, 48.99943 * 4, 51.91309 * 4,
+	27.5 * 2, 29.13524 * 2, 30.86771 * 2,
 ]
 var drum: Array[AudioStreamPlayer]
 const env_mod: PackedFloat32Array = [
@@ -35,14 +30,14 @@ const env_mod: PackedFloat32Array = [
 	16.0, 3.0, 3.0,
 ]
 const pat_step = 4
-const pat_para = 6
+const pat_para = 8
 const stride = pat_para * pat_step
 const pats: PackedByteArray = [
-	#0 [Note], stutterCount, [envMod], [drum], [drumFiltNote], [drumEnvMod]
-	0, 2, 0, 0, 0, 0,
-	9, 1, 1, 4, 9, 1,
-	5, 4, 0, 1, 5, 0,
-	7, 1, 0, 2, 7, 1,
+	#0 [Note], oct, stutterCount, [envMod], [drum], [drumFiltNote], oct, [drumEnvMod]
+	C, O0, 2, 0, 0, C, O0, 0,
+	A, O0, 1, 1, 4, A, O0, 1,
+	F, O0, 4, 0, 1, F, O0, 0,
+	E, O0, 1, 0, 2, E, O0, 1,
 ]
 # 256 pattern limit
 const song: PackedByteArray = [
@@ -83,15 +78,15 @@ func fill_buffer() -> void:
 	var fil_i: int = (song[fil_p / pat_step % song.size()]
 	* stride + (fil_p % pat_step) * pat_para)
 	# can set mod bus filter now
-	var mod: int = pats[fil_i + 2]
-	var dmod: int = pats[fil_i + 5]
-	var freq: float = notes[pats[fil_i]]
+	var mod: int = pats[fil_i + 3]
+	var dmod: int = pats[fil_i + 7]
+	var freq: float = notes[pats[fil_i]] * pats[fil_i + 1]
 	var df: float = env_mod[3 * mod + 1] * fil_t
 	freq *= env_mod[3 * mod] * (1.0 + df)
 	var rez: float = env_mod[3 * mod + 2]
 	lpf.cutoff_hz = freq
 	lpf.resonance = rez
-	var dfreq: float = notes[pats[fil_i + 4]]
+	var dfreq: float = notes[pats[fil_i + 5]] * pats[fil_i + 6]
 	var ddf: float = env_mod[3 * dmod + 1] * fil_t
 	dfreq *= env_mod[3 * dmod] * (1.0 + ddf)
 	var drez: float = env_mod[3 * dmod + 2]
@@ -99,16 +94,16 @@ func fill_buffer() -> void:
 	dlpf.resonance = drez
 	# and some drum
 	if fil_i != last_drum:
-		var d: AudioStreamPlayer = drum[pats[fil_i + 3]]
+		var d: AudioStreamPlayer = drum[pats[fil_i + 4]]
 		# maybe use multiple channels
 		d.play()
 	last_drum = fil_i 
 	for i in range(frames):
 		var idx = (song[song_pos / pat_step % song.size()]
 		* stride + (song_pos % pat_step) * pat_para)
-		var inc: float = notes[pats[idx]] * rate
+		var inc: float = notes[pats[idx]] * rate * pats[idx + 1]
 		time = fmod(time, 1.0)
-		var env: float = 1.0 - fmod(pats[idx + 1] * time, 1.0)
+		var env: float = 1.0 - fmod(pats[idx + 2] * time, 1.0)
 		playback.push_frame((phase - 0.5) * env * pan)
 		phase = fmod(phase + inc, 1.0)
 		time += inc_env
