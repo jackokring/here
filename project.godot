@@ -25,7 +25,7 @@ Game="*res://Scripts/game.gd"
 [display]
 
 window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_height=360
 window/stretch/mode="viewport"
 
 [input]
@@ -131,3 +131,4 @@ ui_end={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
