@@ -5,6 +5,15 @@ extends Node
 # sometimes is class.
 
 
+## DisplayServer
+# set fullscreen from options
+func set_fullscreen(full: bool):
+	if full:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
 ## TileMapLayer
 # get tile atlas pos at collision RID shape on tile map layer
 func rid_to_tile(tile_map: TileMapLayer, rid: RID):
