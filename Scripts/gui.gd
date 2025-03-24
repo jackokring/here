@@ -10,9 +10,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_page_down"):
 		Game.paused = !Game.paused
+	var last: bool = visible
 	visible = Game.paused
-	if visible:
+	# new visible first focus
+	if visible and not last:
 		self.get_tab_bar().grab_focus()
+	# other focus checks to enter tabs?
 
 
 # open browser
