@@ -13,9 +13,11 @@ func _process(delta: float) -> void:
 	var last: bool = visible
 	visible = Game.paused
 	# new visible first focus
-	if visible and not last:
-		self.get_tab_bar().grab_focus()
-	# other focus checks to enter tabs?
+	if visible:
+		# focus handle only for logical last open
+		if not last:
+			self.get_tab_bar().grab_focus()
+		# other focus checks to enter tabs?
 
 
 # open browser
