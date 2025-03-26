@@ -38,3 +38,4 @@ tree_root = SubResource("AnimationRootNode_m86u8")
 
 [node name="Bounce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_7j5p0")
+bus = &"SFX"
