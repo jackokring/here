@@ -23,21 +23,27 @@ const notes: PackedFloat32Array = [
 	27.5 * 2, 29.13524 * 2, 30.86771 * 2,
 ]
 var drum: Array[AudioStreamPlayer]
+enum { kick, snare, clap, open, close }
 const env_mod: PackedFloat32Array = [
-	#0 freqMul, envGain, rez
-	32.0, 1.0, 0.77,
-	#1
-	16.0, 3.0, 3.0,
+	#freqMul, envGain, rez
+	#0 open
+	32.0, 0.0, 0.77,
+	#1 rez twang
+	4.0, 3.0, 3.0,
+	#2 neutral twang
+	1.0, 2.0, 0.75,
+	#3 west coat cut
+	0.125, 0.0, 0.8,
 ]
 const pat_step = 4
 const pat_para = 8
 const stride = pat_para * pat_step
 const pats: PackedByteArray = [
 	#0 [Note], oct, stutterCount, [envMod], [drum], [drumFiltNote], oct, [drumEnvMod]
-	C, O0, 2, 0, 0, C, O0, 0,
-	A, O0, 1, 1, 4, A, O0, 1,
-	F, O0, 4, 0, 1, F, O0, 0,
-	E, O0, 1, 0, 2, E, O0, 1,
+	C, O0, 2, 0, kick, C, O3, 0,
+	A, O0, 1, 1, open, A, O4, 1,
+	F, O0, 4, 0, snare, F, O3, 0,
+	E, O0, 1, 0, clap, E, O3, 1,
 ]
 # 256 pattern limit
 const song: PackedByteArray = [
@@ -47,12 +53,12 @@ const song: PackedByteArray = [
 
 func _ready() -> void:
 	rate = 1 / stream.mix_rate
-	lpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Bass"), 0) as AudioEffectFilter
-	dlpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Drum"), 0) as AudioEffectFilter
 	drum = [
 		#0 to 4
 		$Kick, $Snare, $Clap, $Open, $Closed
 	]
+	lpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Bass"), 0) as AudioEffectFilter
+	dlpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Drum"), 0) as AudioEffectFilter
 	start()
 
 
