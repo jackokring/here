@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3e6ll")
 tab_alignment = 1
-current_tab = 5
+current_tab = 3
 script = ExtResource("2_ok0do")
 
 [node name="Play" type="MarginContainer" parent="."]
@@ -50,13 +50,19 @@ theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 2
 
 [node name="Setup" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Setup/VBoxContainer"]
+layout_mode = 2
+text = "Full Screen"
 
 [node name="Lore" type="MarginContainer" parent="."]
 visible = false
@@ -74,6 +80,7 @@ text = "cool"
 threaded = true
 
 [node name="Credits" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -104,5 +111,6 @@ Simon Jackson
 [/center]"
 threaded = true
 
+[connection signal="toggled" from="Setup/VBoxContainer/CheckButton" to="." method="fullscreen_toggled"]
 [connection signal="meta_clicked" from="Lore/RichTextLabel" to="." method="meta_clicked"]
 [connection signal="meta_clicked" from="Credits/RichTextLabel" to="." method="meta_clicked"]

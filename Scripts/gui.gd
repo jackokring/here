@@ -23,3 +23,7 @@ func _process(delta: float) -> void:
 # open browser
 func meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
+
+
+func fullscreen_toggled(toggled_on: bool) -> void:
+	Global.set_fullscreen(toggled_on)
