@@ -24,10 +24,21 @@ func _process(delta: float) -> void:
 					$Setup/VList/Lang.selected = l
 			$Play.visible = true
 			$Play/VList/Play.grab_focus()
+		# when always visible
+		if $Lore.visible or $Credits.visible:
+			if Input.is_action_pressed("ui_up"):
+				RTL_scroll_by($Lore/RichTextLabel, -10)
+				RTL_scroll_by($Credits/RichTextLabel, -10)
+			if Input.is_action_pressed("ui_down"):
+				RTL_scroll_by($Lore/RichTextLabel, 10)
+				RTL_scroll_by($Credits/RichTextLabel, 10)
 	# hide
 	if not visible and last:
 		# save settings
 		Global.save()
+
+func RTL_scroll_by(rtl: RichTextLabel, by: int) -> void:
+	rtl.get_v_scroll_bar().value += by
 
 func save_exit() -> void:
 	Global.save_exit()
