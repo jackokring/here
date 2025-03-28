@@ -5,6 +5,7 @@ extends Node
 # sometimes is class.
 var config = ConfigFile.new()
 var audio_id: Array[String] = [ "Master", "DNB", "SFX" ]
+var lang_id: Array[String] = [ "en" ]
 
 func _ready() -> void:
 	config.load("user://global.cfg")	# error?
@@ -13,6 +14,7 @@ func _ready() -> void:
 		set_track_vol(i, get_track_vol(i))
 	# display
 	set_fullscreen(get_fullscreen())
+	set_lang(get_lang())
 
 func save() -> void:
 	config.save("user://global.cfg") # no error
@@ -46,6 +48,13 @@ func set_fullscreen(full: bool):
 
 func get_fullscreen():
 	return config.get_value("display", "full", false)
+
+func set_lang(lang: String):
+	config.set_value("locale", "lang", lang)
+	TranslationServer.set_locale(lang)
+
+func get_lang():
+	return config.get_value("locale", "lang", OS.get_locale_language())
 
 ## TileMapLayer
 # get tile atlas pos at collision RID shape on tile map layer

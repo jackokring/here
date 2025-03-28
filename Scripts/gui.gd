@@ -14,13 +14,16 @@ func _process(delta: float) -> void:
 	if visible:
 		# focus handle only for logical last open
 		if not last:
-			self.get_tab_bar().grab_focus()
 			# update volume
 			update_audio_selected($Setup/VList/Buses.selected)
 			# update fullscreen
 			$Setup/VList/FullScreen.set_pressed_no_signal(Global.get_fullscreen())
-		# other focus checks to enter tabs?
-		
+			# set locale lang
+			for l in range(Global.lang_id.size()):
+				if Global.get_lang() == Global.lang_id[l]:
+					$Setup/VList/Lang.selected = l
+			$Play.visible = true
+			$Play/VList/Play.grab_focus()
 	# hide
 	if not visible and last:
 		# save settings
@@ -36,9 +39,15 @@ func update_audio_selected(selected: int) -> void:
 func update_audio_changed(value: float) -> void:
 	Global.set_track_vol(Global.audio_id[$Setup/VList/Buses.selected], value)
 
+func update_lang_selected(lang: int) -> void:
+	Global.set_lang(Global.lang_id[lang])
+
 # open browser
 func meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
 
 func fullscreen_toggled(toggled_on: bool) -> void:
 	Global.set_fullscreen(toggled_on)
+
+func unpause() -> void:
+	Game.paused = false

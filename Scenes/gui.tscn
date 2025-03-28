@@ -33,6 +33,11 @@ metadata/_tab_index = 0
 [node name="VList" type="VBoxContainer" parent="Play"]
 layout_mode = 2
 
+[node name="Play" type="Button" parent="Play/VList"]
+layout_mode = 2
+text = "Return to Game"
+alignment = 0
+
 [node name="Exit" type="Button" parent="Play/VList"]
 layout_mode = 2
 text = "Save and Exit"
@@ -86,6 +91,13 @@ popup/item_2/id = 1
 [node name="Volume" type="HSlider" parent="Setup/VList"]
 layout_mode = 2
 
+[node name="Lang" type="OptionButton" parent="Setup/VList"]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "English"
+popup/item_0/id = 0
+
 [node name="Lore" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 2
@@ -133,9 +145,11 @@ Simon Jackson
 [/center]"
 threaded = true
 
+[connection signal="pressed" from="Play/VList/Play" to="." method="unpause"]
 [connection signal="pressed" from="Play/VList/Exit" to="." method="save_exit"]
 [connection signal="toggled" from="Setup/VList/FullScreen" to="." method="fullscreen_toggled"]
 [connection signal="item_selected" from="Setup/VList/Buses" to="." method="update_audio_selected"]
 [connection signal="value_changed" from="Setup/VList/Volume" to="." method="update_audio_changed"]
+[connection signal="item_selected" from="Setup/VList/Lang" to="." method="update_lang_selected"]
 [connection signal="meta_clicked" from="Lore/RichTextLabel" to="." method="meta_clicked"]
 [connection signal="meta_clicked" from="Credits/RichTextLabel" to="." method="meta_clicked"]
