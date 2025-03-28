@@ -12,13 +12,15 @@ This project has a licence mixology with many licences depending on the files.
 ## Sound Assets
 
 - Various sound assets released under CC0 or public domain licence.
+- Drum sounds free sample bonus.
 
 ## Script Assets
 
-- All scripts are (c)2025 Simon Jackson, and can be used for an attributed
+- Scripts (c)2025 Simon Jackson, and can be used for an attributed
   unmodified build using `godot` or if used as copied source with significant
   and all round different eventual gameplay or program action then GPL applies.
   You can request other licence by contacting the author (me) by a `github` issue.
+- Other scripts copied from submodules are MIT licence (see submodules).
 
 ## Text Documents (Not the Code Scripts)
 
