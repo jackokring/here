@@ -67,11 +67,13 @@ text = "Full Screen"
 [node name="Buses" type="OptionButton" parent="Setup/VList"]
 layout_mode = 2
 selected = 0
-item_count = 2
-popup/item_0/text = "Music Volume"
-popup/item_0/id = 0
-popup/item_1/text = "Sound Effects Volume"
-popup/item_1/id = 1
+item_count = 3
+popup/item_0/text = "Master Volume"
+popup/item_0/id = 2
+popup/item_1/text = "Music Volume"
+popup/item_1/id = 0
+popup/item_2/text = "Sound Effects Volume"
+popup/item_2/id = 1
 
 [node name="Volume" type="HSlider" parent="Setup/VList"]
 layout_mode = 2
@@ -124,5 +126,7 @@ Simon Jackson
 threaded = true
 
 [connection signal="toggled" from="Setup/VList/FullScreen" to="." method="fullscreen_toggled"]
+[connection signal="item_selected" from="Setup/VList/Buses" to="." method="update_audio_selected"]
+[connection signal="value_changed" from="Setup/VList/Volume" to="." method="update_audio_changed"]
 [connection signal="meta_clicked" from="Lore/RichTextLabel" to="." method="meta_clicked"]
 [connection signal="meta_clicked" from="Credits/RichTextLabel" to="." method="meta_clicked"]

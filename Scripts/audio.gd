@@ -61,16 +61,13 @@ func _ready() -> void:
 	dlpf = AudioServer.get_bus_effect(AudioServer.get_bus_index("Drum"), 0) as AudioEffectFilter
 	start()
 
-
 func _process(delta: float) -> void:
 	fill_buffer()
-
 
 func start() -> void:
 	play()
 	playback = get_stream_playback()
 	fill_buffer()
-
 
 func fill_buffer() -> void:
 	var frames: int = playback.get_frames_available()
