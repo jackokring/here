@@ -21,7 +21,10 @@ Global="*res://Scripts/global.gd"
 Atlas="*res://Scripts/atlas.gd"
 Body="*res://Scripts/body.gd"
 Game="*res://Scripts/game.gd"
-BigCat="*res://Scripts/bigcat.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=0
 
 [display]
 

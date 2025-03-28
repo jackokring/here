@@ -5,9 +5,10 @@
 
 ## N.B. Imported and slightly changed for purpose
 # git submodule add git@github.com:rohanrhu/BigCat.git
-# set as an autoload ...
+# set as an autoload ... NO, does strange singleton behaviour with statics
 
 extends Node
+class_name BigCat
 
 # All atomic scalar operations are done with 30-bit integers
 # They never exceed the native integer limit (2^63 - 1)
@@ -953,9 +954,9 @@ class BigNumber:
 		var digits: PackedByteArray = []
 		
 		var prefix = "-" if self.is_negative else ""
-		
+		var remainder
 		while number.size() > 0:
-			var remainder = 0
+			remainder = 0
 			for i in range(number.size() - 1, -1, -1):
 				var temp = remainder * BigCat.ATOMIC_MAX + number[i]
 				number[i] = temp / p_base
@@ -973,8 +974,8 @@ class BigNumber:
 		if digits.size() < precision or digits.size() <= 3:
 			return digits.get_string_from_ascii()
 		
-		var remainder := 1 if precision == 0 else digits.size() % precision
-		var thousands := int((digits.size() - 1) / 3)
+		remainder = 1 if precision == 0 else digits.size() % precision
+		var thousands: int = (digits.size() - 1) / 3
 		if remainder != 0:
 			digits.insert(remainder, ".".unicode_at(0))
 			digits.resize(precision + 1)
