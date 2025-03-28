@@ -17,6 +17,8 @@ func _process(delta: float) -> void:
 			self.get_tab_bar().grab_focus()
 			# update volume
 			update_audio_selected($Setup/VList/Buses.selected)
+			# update fullscreen
+			$Setup/VList/FullScreen.set_pressed_no_signal(Global.get_fullscreen())
 		# other focus checks to enter tabs?
 		
 	# hide

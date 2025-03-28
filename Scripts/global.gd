@@ -12,7 +12,7 @@ func _ready() -> void:
 	for i in audio_id:
 		set_track_vol(i, get_track_vol(i))
 	# display
-	set_fullscreen(config.get_value("display", "full", false))
+	set_fullscreen(get_fullscreen())
 
 func save() -> void:
 	config.save("user://global.cfg") # no error
@@ -36,6 +36,9 @@ func set_fullscreen(full: bool):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		# root window
 		get_window().move_to_center()
+
+func get_fullscreen():
+	return config.get_value("display", "full", false)
 
 ## TileMapLayer
 # get tile atlas pos at collision RID shape on tile map layer
