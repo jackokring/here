@@ -19,17 +19,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3e6ll")
 tab_alignment = 1
-current_tab = 3
+current_tab = 0
 script = ExtResource("2_ok0do")
 
 [node name="Play" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 0
+
+[node name="VList" type="VBoxContainer" parent="Play"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="Play/VList"]
+layout_mode = 2
+text = "Save and Exit"
+alignment = 0
 
 [node name="Save" type="MarginContainer" parent="."]
 visible = false
@@ -50,6 +57,7 @@ theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 2
 
 [node name="Setup" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -125,6 +133,7 @@ Simon Jackson
 [/center]"
 threaded = true
 
+[connection signal="pressed" from="Play/VList/Exit" to="." method="save_exit"]
 [connection signal="toggled" from="Setup/VList/FullScreen" to="." method="fullscreen_toggled"]
 [connection signal="item_selected" from="Setup/VList/Buses" to="." method="update_audio_selected"]
 [connection signal="value_changed" from="Setup/VList/Volume" to="." method="update_audio_changed"]

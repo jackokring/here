@@ -26,6 +26,9 @@ func _process(delta: float) -> void:
 		# save settings
 		Global.save()
 
+func save_exit() -> void:
+	Global.save_exit()
+
 # Audio updater
 func update_audio_selected(selected: int) -> void:
 	$Setup/VList/Volume.set_value_no_signal(Global.get_track_vol(Global.audio_id[selected]))

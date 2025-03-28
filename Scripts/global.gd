@@ -17,6 +17,13 @@ func _ready() -> void:
 func save() -> void:
 	config.save("user://global.cfg") # no error
 
+func save_exit() -> void:
+	save()
+	get_tree().quit()
+
+func reload() -> void:
+	_ready()
+
 ## AudioServer
 func  set_track_vol(id: String, percent: float) -> void:
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(id), percent / 100.0)
