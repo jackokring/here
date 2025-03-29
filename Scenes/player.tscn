@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcb5udwiaamw0"]
+[gd_scene load_steps=8 format=3 uid="uid://dcb5udwiaamw0"]
 
 [ext_resource type="Script" uid="uid://cscpq42rfcmq" path="res://Scripts/player.gd" id="1_d2rsa"]
 [ext_resource type="Texture2D" uid="uid://c2nnwr635tk2h" path="res://Tiles/animals.png" id="2_7pqyo"]
 [ext_resource type="AudioStream" uid="uid://dc36xkb1f674l" path="res://Sounds/bounce.wav" id="3_7j5p0"]
+[ext_resource type="AudioStream" uid="uid://dh3x6gim7bmw3" path="res://Sounds/gliss.wav" id="4_vgqql"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8vsl"]
 friction = 0.0
@@ -40,6 +41,9 @@ tree_root = SubResource("AnimationRootNode_m86u8")
 [node name="Bounce" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("3_7j5p0")
 bus = &"SFX"
+
+[node name="Loading" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_vgqql")
 
 [node name="Loading" type="Timer" parent="."]
 wait_time = 2.0

@@ -13,6 +13,7 @@ func loader() -> void:
 	modulate = 0xffffff7f
 	$Loading.start()
 	position = Global.get_random_position(Global.rand)
+	$Sounds/Loading.play()
 
 func end_loader() -> void:
 	modulate = 0xffffffff
