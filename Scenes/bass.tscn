@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://btg0v2t0d3bu4" path="res://Sounds/Drums/lil-jon-type-closed-hi-hat.wav" id="6_8nrsr"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_48uwx"]
-mix_rate = 8192.0
+mix_rate = 11025.0
 
 [node name="Bass" type="AudioStreamPlayer"]
 stream = SubResource("AudioStreamGenerator_48uwx")

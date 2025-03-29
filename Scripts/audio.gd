@@ -29,9 +29,9 @@ const drum_freq: Array[int] = [
 	# [note], octave
 	Gs, O2,# kick
 	Gs, O3,# snare
-	Gs, O4,# clap
-	Gs, O4,# open
-	Gs, O4,# close
+	Gs, O3,# clap
+	Gs, O3,# open
+	Gs, O3,# close
 ]
 enum { kick, snare, clap, open, close }
 # envMod enum
@@ -39,13 +39,13 @@ enum { dry, cut, atq, twg, rez }
 const env_mod: PackedFloat32Array = [
 	#freqMul, envGain, rez (envGain is 3.0 for +1.0 double octave twang etc.)
 	#0 dry
-	32.0, 0.0, 0.77,
+	8.0, 0.0, 0.77,
 	#1 cut
-	1.0 / 32.0, 0.0, 0.77,
+	1.0 / 8.0, 0.0, 0.77,
 	#2 atq (cutoff is at freq)
 	1.0, 0.0, 1.0,
 	#3 twg (2 octave twang)
-	0.5, 3.0, 3.0,
+	0.5, 3.0, 4.0,
 	#4 rez (octave down to up forths and fifths)
 	2.0 / 3.0, 1.0, 6.0, 
 ]
@@ -56,8 +56,8 @@ const pats: PackedByteArray = [
 	#0 [Note], oct, stutterCount, [envMod], [drum], [drumEnvMod]
 	C, O1, 2, dry, kick, dry,
 	A, O1, 1, dry, open, dry,
-	F, O1, 4, dry, snare, dry,
-	E, O1, 1, dry, clap, dry,
+	F, O1, 4, twg, snare, rez,
+	E, O1, 1, rez, clap, dry,
 ]
 # 256 pattern limit
 const song: PackedByteArray = [
@@ -101,14 +101,14 @@ func fill_buffer() -> void:
 	var deltaf: float = env_mod[3 * mod + 1] * fil_t
 	freq *= env_mod[3 * mod] * (1.0 + deltaf)
 	var brez: float = env_mod[3 * mod + 2]
-	lpf.cutoff_hz = freq
+	lpf.cutoff_hz = min(freq, stream.mix_rate * 0.5)
 	lpf.resonance = brez
 	var dtable: int = pats[fil_i + 4] * 2
 	var dfreq: float = notes[drum_freq[dtable]] * drum_freq[dtable + 1]
 	var ddeltaf: float = env_mod[3 * dmod + 1] * fil_t
 	dfreq *= env_mod[3 * dmod] * (1.0 + ddeltaf)
 	var drez: float = env_mod[3 * dmod + 2]
-	dlpf.cutoff_hz = dfreq
+	dlpf.cutoff_hz = min(dfreq, stream.mix_rate * 0.5)
 	dlpf.resonance = drez
 	# and some drum
 	if fil_i != last_drum:
