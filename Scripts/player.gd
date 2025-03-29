@@ -21,6 +21,7 @@ func end_loader() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$Sprite2D.visible = not bool(int(fmod($Loading.time_left * 8.0, 2.0)))
 	freeze = Game.paused
 	if freeze:
 		return

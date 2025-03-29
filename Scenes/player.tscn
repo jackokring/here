@@ -44,7 +44,6 @@ bus = &"SFX"
 
 [node name="Loading" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("4_vgqql")
-max_polyphony = 4
 bus = &"SFX"
 
 [node name="Loading" type="Timer" parent="."]
