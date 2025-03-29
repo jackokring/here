@@ -59,10 +59,10 @@ func set_fullscreen(full: bool):
 func get_fullscreen():
 	return config.get_value("display", "full", false)
 
-func get_random_position(rand: RandomNumberGenerator) -> Vector2:
+func get_random_position(random: RandomNumberGenerator) -> Vector2:
 	var screen = get_viewport().get_visible_rect().size
-	return Vector2(rand.randf_range(residual.x, screen.x - residual.x),
-		rand.randf_range(residual.y, screen.y - residual.y))
+	return Vector2(random.randf_range(residual.x, screen.x - residual.x),
+		random.randf_range(residual.y, screen.y - residual.y))
 
 func top_rect() -> Rect2:
 	var screen = get_viewport().get_visible_rect().size

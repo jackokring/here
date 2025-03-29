@@ -235,7 +235,3 @@ offset_right = 580.0
 offset_bottom = 300.0
 
 [node name="Bass" parent="." instance=ExtResource("9_w267c")]
-process_priority = 1
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 1
