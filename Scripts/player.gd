@@ -36,7 +36,7 @@ func map_collide(atlas: Array[Vector2i], id: Vector2i) -> void:
 		Atlas.field:
 			match id:
 				Atlas.field[Atlas.WALL]:
-					$Bounce.play()
+					$Sounds/Bounce.play()
 
 # body collide
 # use body for information exchange?
