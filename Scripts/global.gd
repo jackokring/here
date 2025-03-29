@@ -38,6 +38,11 @@ func get_track_vol(id: String) -> float:
 	return config.get_value("audio", id, vol)
 
 ## DisplayServer
+# cells per screen
+const dim: Vector2i = Vector2i(40, 22)
+# residual x, y
+const residual: Vector2i = Vector2i(0, 4)
+
 # set fullscreen from options
 func set_fullscreen(full: bool):
 	config.set_value("display", "full", full)
@@ -53,7 +58,16 @@ func get_fullscreen():
 
 func get_random_position(rand: RandomNumberGenerator) -> Vector2:
 	var screen = get_viewport().get_visible_rect().size
-	return Vector2(rand.randf_range(0, screen.x), rand.randf_range(0, screen.y))
+	return Vector2(rand.randf_range(residual.x, screen.x - residual.x),
+		rand.randf_range(residual.y, screen.y - residual.y))
+
+func top_rect() -> Rect2:
+	var screen = get_viewport().get_visible_rect().size
+	return Rect2(0, 0,  screen.x, residual.y)
+
+func bottom_rect() -> Rect2:
+	var screen = get_viewport().get_visible_rect().size
+	return Rect2(0, screen.y - residual.y,  screen.x, residual.y)
 
 func set_lang(lang: String):
 	config.set_value("locale", "lang", lang)

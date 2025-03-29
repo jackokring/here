@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c4nudo6vvy8m1"]
+[gd_scene load_steps=17 format=4 uid="uid://c4nudo6vvy8m1"]
 
 [ext_resource type="Script" uid="uid://p1banef2my5f" path="res://Scripts/main.gd" id="1_wci3j"]
 [ext_resource type="PackedScene" uid="uid://dh52fxnof5pfc" path="res://Scenes/gui.tscn" id="2_upaaj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cmpdmlwt3fkou" path="res://Scripts/overlay.gd" id="5_c6khe"]
 [ext_resource type="PackedScene" uid="uid://dcb5udwiaamw0" path="res://Scenes/player.tscn" id="6_0xi8y"]
 [ext_resource type="Texture2D" uid="uid://dismjjnhb13hj" path="res://Tiles/field.png" id="6_hf1i6"]
+[ext_resource type="Script" uid="uid://br86n0lfebkoi" path="res://Scenes/hud.gd" id="6_hptm8"]
 [ext_resource type="Script" uid="uid://biadttfl8pa6u" path="res://Scripts/field.gd" id="6_yw450"]
 [ext_resource type="PackedScene" uid="uid://th65c8v402vp" path="res://Scenes/bass.tscn" id="9_w267c"]
 
@@ -203,23 +204,28 @@ sources/1 = SubResource("TileSetAtlasSource_b1ht1")
 script = ExtResource("1_wci3j")
 
 [node name="GUI" parent="." instance=ExtResource("2_upaaj")]
+z_index = 5
 offset_left = 60.0
 offset_top = 60.0
 offset_right = 580.0
 offset_bottom = 300.0
 
 [node name="Sky" type="TileMapLayer" parent="."]
-z_index = 3
+z_index = 4
 z_as_relative = false
 tile_set = SubResource("TileSet_okgd7")
 script = ExtResource("3_7xf4d")
 
 [node name="Overlay" type="TileMapLayer" parent="."]
-z_index = 2
+z_index = 3
 z_as_relative = false
 tile_map_data = PackedByteArray("AAADAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_1i56d")
 script = ExtResource("5_c6khe")
+
+[node name="HUD" type="Node2D" parent="."]
+z_index = 2
+script = ExtResource("6_hptm8")
 
 [node name="Player" parent="." instance=ExtResource("6_0xi8y")]
 
