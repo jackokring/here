@@ -38,3 +38,9 @@ tree_root = SubResource("AnimationRootNode_m86u8")
 [node name="Bounce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_7j5p0")
 bus = &"SFX"
+
+[node name="Loading" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Loading" to="." method="end_loader"]
