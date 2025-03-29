@@ -6,8 +6,10 @@ extends Node
 var config = ConfigFile.new()
 var audio_id: Array[String] = [ "Master", "DNB", "SFX" ]
 var lang_id: Array[String] = [ "en" ]
+var rand = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	rand.randomize()
 	config.load("user://global.cfg")	# error?
 	# audio
 	for i in audio_id:
@@ -48,6 +50,10 @@ func set_fullscreen(full: bool):
 
 func get_fullscreen():
 	return config.get_value("display", "full", false)
+
+func get_random_position(rand: RandomNumberGenerator) -> Vector2:
+	var screen = get_viewport().get_visible_rect().size
+	return Vector2(rand.randf_range(0, screen.x), rand.randf_range(0, screen.y))
 
 func set_lang(lang: String):
 	config.set_value("locale", "lang", lang)

@@ -16,7 +16,6 @@ radius = 5.0
 [node name="Player" type="RigidBody2D"]
 z_index = 1
 z_as_relative = false
-position = Vector2(100, 100)
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_v8vsl")
 gravity_scale = 0.0

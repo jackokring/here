@@ -5,6 +5,7 @@ func _ready() -> void:
 	body_shape_entered.connect(on_body_shape_entered)
 	contact_monitor = true
 	max_contacts_reported = 16
+	position = Global.get_random_position(Global.rand)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
