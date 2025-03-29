@@ -42,6 +42,9 @@ func get_track_vol(id: String) -> float:
 const dim: Vector2i = Vector2i(40, 22)
 # residual x, y
 const residual: Vector2i = Vector2i(0, 4)
+# and mini font
+const dim_font: Vector2i = Vector2i(80, 35)
+const residual_font: Vector2i = Vector2i(0, 5)
 
 # set fullscreen from options
 func set_fullscreen(full: bool):
