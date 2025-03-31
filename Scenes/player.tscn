@@ -50,4 +50,7 @@ bus = &"SFX"
 wait_time = 2.0
 one_shot = true
 
+[node name="Navigate" type="NavigationAgent2D" parent="."]
+navigation_layers = 0
+
 [connection signal="timeout" from="Loading" to="." method="end_loader"]

@@ -123,6 +123,7 @@ ui_end={
 [layer_names]
 
 2d_physics/layer_1="Border"
+2d_navigation/layer_1="Path"
 2d_physics/layer_2="Avatar"
 2d_physics/layer_3="AI"
 2d_physics/layer_4="Container"
