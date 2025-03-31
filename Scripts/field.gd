@@ -17,6 +17,10 @@ func make_paths() -> void:
 	# 25 to 50%
 	var paths: int = rand.randf_range(0.25, 0.5) * total
 	var done: int = 0
+	# clear to grass before as maybe new level
+	for x in range(Global.dim.x):
+		for y in range(Global.dim.y):
+			Global.pos_to_newtile(self, Vector2i(x, y), Atlas.field[Atlas.GRASS])
 	while not done > paths:
 		# make a path
 		var vert: bool = bool(rand.randi() % 2)
