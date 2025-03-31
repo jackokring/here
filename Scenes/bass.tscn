@@ -9,6 +9,7 @@
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_48uwx"]
 mix_rate = 11025.0
+buffer_length = 3.0
 
 [node name="Bass" type="AudioStreamPlayer"]
 stream = SubResource("AudioStreamGenerator_48uwx")

@@ -56,7 +56,7 @@ const pats: PackedByteArray = [
 	#0 [Note], oct, stutterCount, [envMod], [drum], [drumEnvMod]
 	C, O1, 2, dry, kick, dry,
 	A, O1, 1, dry, open, dry,
-	F, O1, 4, twg, snare, rez,
+	F, O1, 3, twg, snare, rez,
 	E, O1, 1, rez, clap, dry,
 ]
 # 256 pattern limit

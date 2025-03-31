@@ -6,10 +6,10 @@ var bottom: float = 100.0
 func _draw() -> void:
 	var rect: Rect2 = Global.top_rect()
 	rect.size.x *= top / 100.0
-	draw_rect(rect, Color.REBECCA_PURPLE)
+	draw_rect(rect, Color.RED)
 	rect = Global.bottom_rect()
 	rect.size.x *= top / 100.0
-	draw_rect(rect, Color.BLUE_VIOLET)
+	draw_rect(rect, Color.BLUE)
 
 func _process(delta: float) -> void:
 	queue_redraw()
