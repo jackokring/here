@@ -35,7 +35,7 @@ const drum_freq: Array[int] = [
 ]
 enum { kick, snare, clap, open, close }
 # envMod enum
-enum { dry, cut, atq, twg, rez, top }
+enum { dry, cut, atq, twg, rez, top, swp }
 const env_mod: PackedFloat32Array = [
 	#freqMul, envGain, rez (envGain is 3.0 for +1.0 double octave twang etc.)
 	#0 dry
@@ -50,6 +50,8 @@ const env_mod: PackedFloat32Array = [
 	4.0 / 3.0, 1.0, 6.0,
 	# top
 	4.0, 1.0, 5.0,
+	# swp (sweep large)
+	2.0, 7.0, 3.0,
 ]
 const pat_step = 4
 const pat_para = 6
@@ -58,7 +60,7 @@ const pats: PackedByteArray = [
 	#0 [Note], oct, stutterCount, [envMod], [drum], [drumEnvMod]
 	C, O1, 2, dry, kick, dry,
 	A, O1, 1, twg, open, dry,
-	G, O1, 3, rez, snare, dry,
+	G, O1, 3, swp, snare, dry,
 	E, O1, 1, dry, clap, top,
 ]
 # 256 pattern limit
