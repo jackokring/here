@@ -30,8 +30,8 @@ const drum_freq: Array[int] = [
 	Gs, O2,# kick
 	Gs, O3,# snare
 	Gs, O3,# clap
-	Gs, O3,# open
-	Gs, O3,# close
+	Gs, O4,# open
+	Gs, O4,# close
 ]
 enum { kick, snare, clap, open, close }
 # envMod enum
@@ -59,7 +59,7 @@ const stride = pat_para * pat_step
 const pats: PackedByteArray = [
 	#0 [Note], oct, stutterCount, [envMod], [drum], [drumEnvMod]
 	C, O1, 2, dry, kick, dry,
-	A, O1, 1, twg, open, dry,
+	A, O1, 1, twg, open, twg,
 	G, O1, 3, swp, snare, dry,
 	E, O1, 1, dry, clap, top,
 ]
