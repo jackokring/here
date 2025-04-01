@@ -42,9 +42,12 @@ func get_track_vol(id: String) -> float:
 const dim: Vector2i = Vector2i(40, 22)
 # residual x, y
 const residual: Vector2i = Vector2i(0, 4)
+# size of tile
+const size: Vector2i = Vector2i(16, 16)
 # and mini font
 const dim_font: Vector2i = Vector2i(80, 35)
 const residual_font: Vector2i = Vector2i(0, 5)
+const size_font: Vector2i = Vector2i(8, 10)
 
 # set fullscreen from options
 func set_fullscreen(full: bool):
@@ -103,6 +106,13 @@ func map_to_atlas(tile_map: TileMapLayer):
 	if tile_map.has_method("use_atlas"):
 		return tile_map.use_atlas()
 	return null
+
+# get centralized tile coordinate under position centre
+# direct collision tests should be avoided sometimes
+func pos_to_tilepos(pos: Vector2) -> Vector2i:
+	var x = int((pos.x - residual.x) / size.x)
+	var y = int((pos.y - residual.y) / size.y)
+	return Vector2i(x, y)
 
 ## RigidBody2D
 # get atlas pos
