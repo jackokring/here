@@ -1,5 +1,20 @@
 extends RigidBody2D
+# actively loaded for collide
 var loaded: bool = false
+# past position (overridable)
+var past:Vector2:
+	set = set_past, get = get_past
+func set_past(to):
+	past = to
+func get_past():
+	return past
+# future position estimate (overridable)
+var future: Vector2:
+	set = set_future, get = get_future
+func set_future(to):
+	future = to
+func get_future():
+	return future
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
